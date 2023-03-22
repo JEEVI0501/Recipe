@@ -20,8 +20,9 @@ def category_list(request):
         if serializer.is_valid():
             serializer.save()
             return JsonResponse(serializer.data, status=201)
-
-        return JsonResponse(serializer.errors, status=400)
+        else:
+            print(serializer.errors)  # add this line to print errors to console
+            return JsonResponse(serializer.errors, status=400)
         
 @csrf_exempt
 def recipe_list(request):

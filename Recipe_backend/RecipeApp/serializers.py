@@ -2,6 +2,7 @@ from rest_framework import serializers
 from .models import Category, User, Recipe, Like
 
 class CategorySerializer(serializers.ModelSerializer):
+    categoryImage = serializers.ImageField(required=False)
     class Meta:
         model = Category
         fields = '__all__'

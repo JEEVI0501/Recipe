@@ -7,7 +7,9 @@ export default function CategoryScreen({ navigation }) {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const response = await fetch('http://your-backend-api/categories');
+        console.log("useffect of categories")
+        const response = await fetch('http://127.0.0.1:8000/RecipeApp/categories/');
+        console.log(response)
         const data = await response.json();
         setCategories(data);
       } catch (error) {
@@ -36,6 +38,7 @@ export default function CategoryScreen({ navigation }) {
 
   return (
     <View>
+      <Text>Hiii</Text>
       <FlatList
         data={categories}
         renderItem={renderCategoryItem}

@@ -29,7 +29,7 @@ DEBUG = True
 
 #ALLOWED_HOSTS = []
 
-
+APPEND_SLASH = False
 # Application definition
 
 INSTALLED_APPS = [
@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'RecipeApp',
-    'rest_framework'
+    'rest_framework',
+    'corsheaders'
 ]
 
 MIDDLEWARE = [
@@ -51,7 +52,12 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
 ]
+CORS_ORIGIN_ALLOW_ALL = True
+# CORS_ALLOWED_ORIGINS = ['exp://192.168.29.27:19000']
+# CORS_ALLOW_METHODS = [    'GET',    'POST',    'PUT',    'PATCH',    'DELETE',    'OPTIONS']
 
 ROOT_URLCONF = 'Recipe_backend.urls'
 
