@@ -20,15 +20,15 @@ export default function CategoryScreen({ navigation }) {
     fetchCategories();
   }, []);
 
-  const handleCategoryPress = async (category) => {
-    try {
-      const response = await fetch(``);
-      const data = await response.json();
-      navigation.navigate('Recipes', { recipes: data });
-    } catch (error) {
-      console.error(error);
-    }
-  };
+  // const handleCategoryPress = async (category) => {
+  //   try {
+  //     const response = await fetch(``);
+  //     const data = await response.json();
+  //     navigation.navigate('Recipes', { recipes: data });
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // };
 
   const renderCategoryItem = ({ item }) => (
     <TouchableOpacity onPress={() => handleCategoryPress(item)}>
