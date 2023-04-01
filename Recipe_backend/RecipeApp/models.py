@@ -7,9 +7,9 @@ class Category(models.Model):
 
 class User(models.Model):
     uName = models.CharField(max_length=50)
-    uImage = models.ImageField(upload_to='User_images/')
-    akaName = models.CharField(max_length = 50)
-    uAbout = models.CharField(max_length=255)
+    uPassword = models.CharField(max_length=50)
+    akaName = models.CharField(max_length=50)
+    about = models.TextField(default='')
 
 class Recipe(models.Model):
 

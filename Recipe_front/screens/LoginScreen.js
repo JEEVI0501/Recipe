@@ -7,10 +7,35 @@ export default function LoginScreen({ navigation }) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleLogin = () => {
     
-     navigation.navigate('BottomTabNavigation');
-  };
+  const handleLogin = async () => {
+  try {
+    const response = await fetch('https://0640-14-139-180-87.in.ngrok.io/RecipeApp/login/', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        username,
+        password,
+      }),
+    });
+    console.log(response)
+    const data = await response.json();
+    if (response.ok) {
+      // Login successful
+      navigation.navigate('BottomTabNavigation');
+    } else {
+      // Login failed, display error message
+      alert(data.error);
+    }
+  } catch (error) {
+    // Handle network error
+    console.log(error)
+    alert('Network error, please try again later.');
+  }
+};
+
 
   return (
      <View style={styles.container}>
@@ -18,8 +43,8 @@ export default function LoginScreen({ navigation }) {
         <Image source={image} style={styles.image} />
       </View>
       <View style={styles.formContainer}>
-        <TextInput style={styles.input} placeholder="Username" />
-        <TextInput style={styles.input} placeholder="Password" secureTextEntry={true} />
+        <TextInput style={styles.input} placeholder="Username" onChangeText={setUsername} />
+        <TextInput style={styles.input} placeholder="Password" secureTextEntry={true} onChangeText={setPassword} />
         <TouchableOpacity style={styles.button} onPress={handleLogin}>
           <Text style={styles.buttonText}>Login</Text>
         </TouchableOpacity>

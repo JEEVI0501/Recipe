@@ -9,4 +9,6 @@ urlpatterns = [
     path('users/<int:user_id>/favourites/', views.user_favourites),
     path('users/<int:user_id>/', views.user_detail),
     path('recipes/<int:recipe_id>/like/', views.like_recipe, name='like_recipe'),
+    path('login/', views.login_user, name='login'),
+    path('register/',views.register_user,name='register'),
 ]
